@@ -1,9 +1,10 @@
 import { Plugin } from "obsidian";
 
-export default class ExamplePlugin extends Plugin{
+export default class FantasyMagicItemPlugin extends Plugin{
 	statusBarTextElement: HTMLSpanElement;
 
 	onload() {
+		console.log('Fantasy Magic Item Layout loaded')
 		this.statusBarTextElement = this.addStatusBarItem(),createEl('span')
 		this.readActiveFileAndUpdadeLineCount();
 
@@ -15,6 +16,10 @@ export default class ExamplePlugin extends Plugin{
 			const contend = editor.getDoc().getValue();
 			this.updateLineCount(contend);
 		})
+	}
+
+	onunload() {
+		console.log('Fantasy Magic Item Layout unloaded')	
 	}
 
 	private updateLineCount(fileContend?: string){
